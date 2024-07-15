@@ -1,16 +1,15 @@
 from enum import Enum, auto
-
 #adherencia
+
 class TipoEntrada(Enum): 
     BEBE = auto()
     NIÑO = auto()
     ADULTO = auto()
     JUBILADO = auto()
-    
-  
-
 class Entrada:
   def __init__(self, edad: int):
+    if edad < 0:
+      raise ValueError("La edad no puede ser negativa")
     if edad <= 2:
       self.tipo = TipoEntrada.BEBE
       self.precio = 0
@@ -22,5 +21,23 @@ class Entrada:
       self.precio = 23
     else:
       self.tipo = TipoEntrada.JUBILADO
-      self.precio = 18
-    self.tipo 
+      self.precio = 18 
+
+class Grupo_Entrada:
+  def __init__(self):
+    self.total = 0
+    self.num_entradas = 0
+
+  def add_entrada(self, edad):
+    """
+    En funcion de la edad, crear una entrada e incrementar el contador de entradas.
+    Con el precio de la entrada nueva incrementar el total.
+    """ 
+    """
+    if edad not in range(0, 100):
+      raise ValueError("La edad introducida no es válida")
+    """
+    nueva_entrada = Entrada(edad)
+    self.num_entradas += 1
+    self.total += nueva_entrada.precio
+    
