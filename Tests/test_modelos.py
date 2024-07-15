@@ -1,5 +1,5 @@
 from app.modelos import Entrada, TipoEntrada, Grupo_Entrada
-
+import pytest
 
 def test_crear_entrada():
     entrada = Entrada(12)
@@ -23,6 +23,7 @@ def test_crear_entrada():
 
 
 def test_crear_entrada_edad_negativa_error():
+    
     try:
         entrada = Entrada(-2)
         assert False, "No ha saltado ValueError"

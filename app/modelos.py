@@ -10,7 +10,7 @@ class Entrada:
   def __init__(self, edad: int):
     if edad < 0:
       raise ValueError("La edad no puede ser negativa")
-    if edad <= 2:
+    elif edad <= 2:
       self.tipo = TipoEntrada.BEBE
       self.precio = 0
     elif edad < 13:
@@ -27,6 +27,12 @@ class Grupo_Entrada:
   def __init__(self):
     self.total = 0
     self.num_entradas = 0
+    self.tipos_entrada = {
+      TipoEntrada.BEBE: 0,
+      TipoEntrada.NIÑO: 0,
+      TipoEntrada.ADULTO: 0,
+      TipoEntrada.JUBILADO: 0
+    }
 
   def add_entrada(self, edad):
     """
@@ -41,3 +47,5 @@ class Grupo_Entrada:
     self.num_entradas += 1
     self.total += nueva_entrada.precio
     
+  def cantidad_entradas_por_tipo(self, tipo: TipoEntrada): 
+    return self.tipos_entrada[tipo]
