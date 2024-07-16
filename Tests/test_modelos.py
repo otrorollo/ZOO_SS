@@ -23,13 +23,24 @@ def test_crear_entrada():
 
 
 def test_crear_entrada_edad_negativa_error():
-    
+    with pytest.raises(ValueError):
+        Entrada(-2)
+    """
+    esto es equivalente
     try:
         entrada = Entrada(-2)
         assert False, "No ha saltado ValueError"
     except ValueError:
         assert True
-
+    """
+def xtest_crear_entrada_edad_centenario_error():
+    grupo = Grupo_Entrada()
+    grupo.add_entrada(10)
+    assert grupo.cantidad_entradas_por_tipo(TipoEntrada.NIÑO) == 1
+    grupo.add_entrada(36)
+    assert grupo.cantidad_entradas_por_tipo(TipoEntrada.ADULTO) == 1
+    grupo.add_entrada(13)
+    assert grupo.cantidad_entradas_por_tipo(TipoEntrada.ADULTO) == 2
 
 def test_crear_grupo_entradas():
     grupo = Grupo_Entrada()
@@ -50,3 +61,9 @@ def test_añadir_entradas_a_grupo():
     grupo.add_entrada(2)
     assert grupo.num_entradas == 4
     assert grupo.total == 55
+
+def subtotal_por_tipo():
+    grupo = Grupo_Entrada()
+    grupo.add_entrada(10)
+    assert grupo.subtotal_tipo(TipoEntrada.NIÑO) == 14
+
