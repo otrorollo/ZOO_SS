@@ -1,5 +1,7 @@
 from enum import Enum, auto
 from collections import namedtuple
+
+
 Datos_Entrada = namedtuple("Datos_Entrada", ("precio", "edad_max"))
 
 #adherencia
